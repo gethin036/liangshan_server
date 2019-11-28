@@ -26,7 +26,13 @@ app.use(bodyParser.json())
 
 router(app)
 
+// 页面的 404 处理
+app.get('*', function (req, res){
+  console.log('404 handler..')
+  res.status(404).send({resultCode: '01', msg: 'fail', data: null})
+});
 
+// 错误出路
 app.use(function(err, req, res, next) {
   console.log(err)
   res.status(500).send('something broke')

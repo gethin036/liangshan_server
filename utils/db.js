@@ -22,13 +22,19 @@ var RiskSchema = new Schema({
 }, { _id: false})
 
 var InspectSchema = new Schema({
+  merchantId: String,
+  salesmanId: String,
   remark: String,
+  evaluationScore: String,
   evaluationScore: Number,
+  isSpecialMerchant: Number,
+  riskRatingTables: [RiskSchema],
   createTime: {type: Date, default: Date.now},
-  riskRatingTables: [RiskSchema]
 }, { id: false, versionKey: false })
 
 
+// var MerchantInfo = new Schema()
 
-exports.Score = mongoose.model('Score', ScoreSchema, 'score');
-exports.InspectSchema = mongoose.model('Inspection', InspectSchema, 'inspection');
+// exports.Score = mongoose.model('Score', ScoreSchema, 'score');
+exports.MerchantSchema = mongoose.model('Merchant', InspectSchema, 'merchant');
+// exports.MerchantInfo = mongoose.model('MerchantInfo', MerchantInfo, 'merchantInfo')
